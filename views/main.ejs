@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="/js/bootstrap/jquery-3.2.1.slim.min.js"></script>
+    <script src="/js/bootstrap/popper.min.js"></script>
+    <script src="/js/bootstrap/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+    <script src="/js/socket/main.js"></script>
+    <title><%=servername%></title>
+</head>
+
+<body>
+<h1><%=servername%></h1>
+
+<%-include('./layout/menu')%>
+
+<%if(mainError != '' && mainError != null) {%><div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <%=mainError%>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<%}%>
+
+<h2>글 목록</h2>
+<%if(logined && user.write_permission) {%>
+<%}%>
+
+<div id="post">
+    <%posts.forEach(post => {%>
+    <div class="post">
+        <div class="post_title"><h3><a href="/post/<%=post.url%>"><%=post.title%></a></h3></div>
+    </div>
+    <%});%>
+</div>
+</body>
+</html>

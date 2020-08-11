@@ -1,0 +1,10 @@
+input[type=text] {
+    width: 1000px;
+}
+#write_area {
+    width: 1000px;
+    height: 500px;
+}
+#ExistPostWarning {
+    margin-top: 10px;
+}

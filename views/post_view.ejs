@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script>
+        post_name = "<%=name%>";
+        isAdmin = <%=isAdmin%>;
+        userID = "<%=userID%>";
+    </script>
+    <script src="/js/markdown-it.min.js"></script>
+    <script src="/js/bootstrap/jquery-3.2.1.slim.min.js"></script>
+    <script src="/js/bootstrap/popper.min.js"></script>
+    <script src="/js/bootstrap/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/post_view.css">
+    <link rel="stylesheet" href="/css/toastui-editor-min.css">
+    <script src="/js/post_view.js"></script>
+    <title>로드중입니다...</title>
+</head>
+
+<body>
+<h1 id="post_title">글 제목 : 로드중입니다...</h1>
+<%-include('./layout/menu')%>
+
+<h4 id="post_writer">작성자 : 로드중입니다...</h4>
+<button class="btn btn-primary" id="edit_this" hidden>이 글 수정</button>
+<br><br>
+<button class="btn btn-primary" id="remove_this" hidden>이 글 삭제</button>
+<%if(commentError != '' && commentError != null) {%><div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <%=commentError%>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<%}%>
+<hr>
+<div id="body_area">
+    <h2>글이 로드중입니다.</h2>
+</div>
+<hr>
+<div id="comment">
+    <div id="comment_write">
+        <form action="/comment" method="post">
+            <input type="hidden" value="<%=name%>" name="post">
+            <div class="form-group">
+                <label for="InputComment">댓글을 작성하세요.</label>
+                <textarea name="comment" class="form-control" id="InputComment" placeholder="댓글을 작성하세요." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">작성</button>
+        </form>
+    </div>
+    <div id="comment_show"></div>
+</div>
+
+<script src="/js/toastui-editor-viewer.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "SERVER_NAME": "HYONSU POST",
+
+  "PORT": 80,
+  "USE_SSL": false,
+  "SSL_CERT": "YOUR_SSL_CERT",
+  "SSL_KEY": "YOUR_SSL_KEY",
+  "SESSION_SECRET": "super_secret_key_here",
+
+  "ADMIN": [ "ADMIN_FULLID" ],
+
+  "INDEX": [ "index.htm" , "index.html" ],
+
+  "USE_REDIS": false,
+  "REDIS_HOST": "localhost",
+  "REDIS_PORT": 6379,
+  "REDIS_PASSWORD": "",
+
+  "MONGODB_HOST": "localhost",
+  "MONGODB_PORT": 27017,
+  "MONGODB_USER": "MONGODB_USER",
+  "MONGODB_PASSWORD": "MONGODB_PASSWORD",
+  "DBNAME": "post_site",
+
+  "TOKEN_SECRET": "JWT_TOKEN_SECRET_DO_NOT_SHOW_TO_OTHER",
+
+  "SMTP_MAIL_ADDRESS": "SMTP_MAIL_ADDRESS",
+  "SMTP_INFO" : {
+    "host": "MAIL_SERVER_HOST",
+    "port": 465,
+    "secure": true,
+    "auth": {
+      "user": "MAIL_SERVER_USER",
+      "pass": "MAIL_SERVER_PASS"
+    }
+  }
+}

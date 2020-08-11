@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="/js/editor.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css">
+    <script src="/js/bootstrap/jquery-3.2.1.slim.min.js"></script>
+    <script src="/js/bootstrap/popper.min.js"></script>
+    <script src="/js/bootstrap/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/editor.css">
+    <title><%=servername%> - 글 작성기</title>
+</head>
+
+<body>
+<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.js"></script>
+<h1>글 작성기</h1>
+<%-include('./layout/menu')%>
+
+<%if(EditorError != '' && EditorError != null) {%><div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <%=EditorError%>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<%}%>
+
+<form action="/new" method="post" id="form">
+    <input type="hidden" name="text" id="hidden_form">
+
+    <input type="text" name="title" id="InputTitle" value="<%-post_title%>" placeholder="글 제목을 입력해 주세요." required>
+    <br>
+    <input type="text" name="url" id="InputUrl" value="<%-post_url%>" placeholder="글 URL을 입력해 주세요. '/posts/적은 글 URL'이 됩니다. /를 포함할 수 없습니다." required>
+    <div class="alert alert-warning" id="ExistPostWarning" hidden>이미 존재하는 글의 URL입니다. 자신의 글인 경우 덮어쓰고, 아닌 경우 작성할 수 없습니다.</div>
+    <br>
+    <div id="write_area" data-post-text="<%-post_text%>"></div>
+    <br>
+    <input type="submit" value="작성">
+</form>
+</body>
+</html>
