@@ -22,7 +22,7 @@ app.get('/mypage', utils.isLogin, (req, res, next) => {
 
 app.post('/editaccount', utils.isLogin, async (req, res, next) => {
     const exUser = await User.findOne({ nickname : req.body.nickname });
-    if(exUser != null) {
+    if(exUser != null && exUser.fullID != req.user.fullID) {
         req.flash('mypageError', '해당 닉네임이 이미 사용 중입니다!');
         return res.redirect('/mypage');
     }
