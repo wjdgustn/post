@@ -10,8 +10,8 @@ const setting = require('../setting.json');
 
 const app = express.Router();
 
-app.use(bodyParser.json({ limit : "1mb" }));
-app.use(bodyParser.urlencoded({ extended : false , limit : "1mb" }));
+app.use(bodyParser.json({ limit : "10mb" }));
+app.use(bodyParser.urlencoded({ extended : false , limit : "10mb" }));
 
 app.get('/new', utils.isLogin, async (req, res, next) => {
     let post_title, post_url, post_text;
