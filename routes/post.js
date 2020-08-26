@@ -105,7 +105,7 @@ app.post('/new', utils.isLogin, async (req, res, next) => {
     return;
 });
 
-app.get('/removepost/:post', utils.isLogin, async (req, res, next) => {
+app.get('/removepost/:post', utils.isLogin, utils.canWrite, async (req, res, next) => {
     const post = await Post.findOne({ url : req.params.post });
     if(post == null) return res.redirect(`/error?message=해당 게시글은 존재하지 않습니다.`);
 

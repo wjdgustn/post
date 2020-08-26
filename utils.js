@@ -42,3 +42,8 @@ module.exports.verifyToken = (token) => {
         return { "error" : true , "code" : "error" , "message" : "유효하지 않은 토큰입니다." , "errcode" : err.name };
     }
 }
+
+module.exports.canWrite = (req, res, next) => {
+    if(req.user.write_permission) return next();
+    else return res.redirect('/');
+}
