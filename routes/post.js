@@ -63,6 +63,7 @@ app.post('/new', utils.isLogin, async (req, res, next) => {
         });
 
         req.app.get('socket_post').to(req.body.url).emit('msg', { action : 'reload_post' });
+        req.app.get('socket_main').emit('msg', { action : 'reload_post' });
 
         return res.redirect(`/post/${req.body.url}`);
     }
