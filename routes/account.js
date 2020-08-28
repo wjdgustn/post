@@ -203,7 +203,13 @@ app.get('/change_email', utils.isLogin, (req, res, next) => {
     });
 });
 
-app.post('/change_email', utils.isLogin, (req, res, next) => {
+app.post('/change_email', utils.isLogin, async (req, res, next) => {
+    const exUser = await User.findOne({ email : req.body.email });
+    if(exUser != null) {
+        req.flash('mainError', '이미 해당 이메일이 사용중입니다.');
+        return res.redirect('/');
+    }
+
     const token = jwt.sign({
         account_fullID: req.user.fullID,
         email: req.body.email
