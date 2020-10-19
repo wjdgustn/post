@@ -1,3 +1,4 @@
+window.addEventListener('load', loadPost);
 window.onload = function() {
     loadPost();
 
